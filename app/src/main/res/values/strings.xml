@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ranker</string>
+    <string name="create_new">New List</string>
+    <string name="open_existing">Open Existing List</string>
+</resources>
