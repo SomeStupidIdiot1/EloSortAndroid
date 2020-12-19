@@ -2,4 +2,11 @@
     <string name="app_name">Ranker</string>
     <string name="create_new">New List</string>
     <string name="open_existing">Open Existing List</string>
+    <string name="select_pictures">Select Pictures</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="done">Done</string>
+    <string name="remove_pictures">Delete Pictures</string>
+    <string name="edit_list">Edit List</string>
+    <string name="see_rank">Rankings</string>
+    <string name="play_list">Sort List</string>
 </resources>
