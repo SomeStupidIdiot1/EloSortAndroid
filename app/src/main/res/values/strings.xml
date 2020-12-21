@@ -11,4 +11,7 @@
     <string name="play_list">Sort List</string>
     <string name="nothing_selected">Nothing was selected</string>
     <string name="something_bad">Something went wrong</string>
+    <string name="list_name_default">your list name goes here</string>
+    <string name="unfinished_folder_name">unfinished_list_name</string>
+    <string name="list_name_exists">List name exists already</string>
 </resources>

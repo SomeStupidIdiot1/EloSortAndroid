@@ -19,6 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <EditText
+            android:id="@+id/listNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="60dp"
+            android:ems="10"
+            android:hint="@string/list_name_default"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:textAlignment="textStart" />
+
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
@@ -50,7 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="done"
             android:text="@string/done" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
