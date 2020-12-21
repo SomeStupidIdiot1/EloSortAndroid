@@ -9,4 +9,6 @@
     <string name="edit_list">Edit List</string>
     <string name="see_rank">Rankings</string>
     <string name="play_list">Sort List</string>
+    <string name="nothing_selected">Nothing was selected</string>
+    <string name="something_bad">Something went wrong</string>
 </resources>
