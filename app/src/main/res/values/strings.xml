@@ -14,4 +14,10 @@
     <string name="list_name_default">your list name goes here</string>
     <string name="unfinished_folder_name">unfinished_list_name</string>
     <string name="list_name_exists">List name exists already</string>
+    <string name="title_activity_camera_preview">CameraPreviewActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>

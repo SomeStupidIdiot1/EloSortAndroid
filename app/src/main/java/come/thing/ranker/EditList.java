@@ -1,13 +1,16 @@
 package come.thing.ranker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,11 +27,13 @@ import java.util.UUID;
 
 public class EditList extends AppCompatActivity {
 
-    private final int PICK_IMAGE_CODE = 1;
-    public final static int IMAGE_WIDTH = 500;
-    public final static int IMAGE_COMPRESS_QUALITY = 60;
-    public final static String PICTURES_DIRECTORY_NAME = "created_pictures";
+    private final int PICK_IMAGE_CODE = 0;
+    private final static int REQUEST_IMAGE_CAPTURE = 1;
+    final static int IMAGE_WIDTH = 500;
+    final static int IMAGE_COMPRESS_QUALITY = 60;
+    final static String PICTURES_DIRECTORY_NAME = "created_pictures";
     private Path tempDir;
+    private File recentImgTaken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,16 +68,38 @@ public class EditList extends AppCompatActivity {
             Toast.makeText(this, R.string.list_name_exists, Toast.LENGTH_LONG).show();
     }
 
+    public void takePicture(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            recentImgTaken = new File(tempDir.toFile(), UUID.randomUUID().toString() + ".jpeg");
+            Uri uri = FileProvider.getUriForFile(this,
+                    "come.thing.ranker.fileprovider",
+                    recentImgTaken);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                    uri);
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+    public void deletePictures(View view) {
+
+    }
+
     @Override
     protected void onActivityResult(int request, int result, Intent data) {
         try {
-            if (request == PICK_IMAGE_CODE && result == RESULT_OK && data != null) {
-                if (data.getData() != null)
-                    imageDataToFile(data.getData());
-                else if (data.getClipData() != null) {
-                    ClipData clipData = data.getClipData();
-                    for (int i = 0; i < clipData.getItemCount(); i++)
-                        imageDataToFile(clipData.getItemAt(i).getUri());
+            if (result == RESULT_OK) {
+                if (request == PICK_IMAGE_CODE && data != null) {
+                    // After picture(s) selected
+                    if (data.getData() != null)
+                        imageDataToFile(data.getData());
+                    else if (data.getClipData() != null) {
+                        ClipData clipData = data.getClipData();
+                        for (int i = 0; i < clipData.getItemCount(); i++)
+                            imageDataToFile(clipData.getItemAt(i).getUri());
+                    }
+                } else if (request == REQUEST_IMAGE_CAPTURE) {
+                    imageDataToFile(Uri.fromFile(recentImgTaken));
                 }
             } else
                 Toast.makeText(this, R.string.nothing_selected, Toast.LENGTH_LONG).show();

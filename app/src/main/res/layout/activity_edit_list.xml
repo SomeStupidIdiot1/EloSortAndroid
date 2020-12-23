@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="takePicture"
             android:text="@string/take_picture" />
 
         <Button
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="deletePictures"
             android:text="@string/remove_pictures" />
 
         <Button
