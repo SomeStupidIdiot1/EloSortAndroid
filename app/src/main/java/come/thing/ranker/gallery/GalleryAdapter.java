@@ -1,12 +1,12 @@
 package come.thing.ranker.gallery;
 
-import android.net.Uri;
-import android.util.Log;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import come.thing.ranker.R;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
 
-    private List<Uri> localDataSet;
+    private final List<GalleryItem> localDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
@@ -30,10 +30,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         }
     }
 
-    public GalleryAdapter(List<Uri> dataSet) {
+    public GalleryAdapter(List<GalleryItem> dataSet) {
         localDataSet = dataSet;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
@@ -44,7 +45,15 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getImageView().setImageURI(localDataSet.get(position));
+        GalleryItem item = localDataSet.get(position);
+        ImageView view = viewHolder.getImageView();
+        view.setImageURI(item.getUri());
+        final int TINT = Color.argb(135, 123, 227, 238);
+        view.setColorFilter(item.isSelected() ? TINT : Color.TRANSPARENT);
+        view.setOnClickListener(view1 -> {
+            item.setSelected(!item.isSelected());
+            view.setColorFilter(item.isSelected() ? TINT : Color.TRANSPARENT);
+        });
     }
 
     @Override

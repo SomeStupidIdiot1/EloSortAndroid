@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,11 +21,11 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gallery);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<Uri> filePaths = new ArrayList<>();
+        List<GalleryItem> filePaths = new ArrayList<>();
         Uri data = getIntent().getData();
         if (data != null)
             for (File file : new File(data.getPath()).listFiles())
-                filePaths.add(Uri.fromFile(file));
+                filePaths.add(new GalleryItem(Uri.fromFile(file)));
         GalleryAdapter adapter = new GalleryAdapter(filePaths);
         recyclerView.setAdapter(adapter);
     }
