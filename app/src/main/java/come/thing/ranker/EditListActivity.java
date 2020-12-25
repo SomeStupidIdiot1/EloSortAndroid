@@ -3,7 +3,6 @@ package come.thing.ranker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,9 +10,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +24,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-public class EditList extends AppCompatActivity {
+import come.thing.ranker.gallery.GalleryActivity;
+
+public class EditListActivity extends AppCompatActivity {
 
     private final int PICK_IMAGE_CODE = 0;
     private final static int REQUEST_IMAGE_CAPTURE = 1;
-    final static int IMAGE_WIDTH = 500;
+    final int MAX_IMAGE_WIDTH = 1000;
     final static int IMAGE_COMPRESS_QUALITY = 60;
     final static String PICTURES_DIRECTORY_NAME = "created_pictures";
     private Path tempDir;
@@ -81,8 +82,11 @@ public class EditList extends AppCompatActivity {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-    public void deletePictures(View view) {
 
+    public void lookAtGallery(View view) {
+        Intent intent = new Intent(this, GalleryActivity.class);
+        intent.setData(Uri.fromFile(tempDir.toFile()));
+        startActivity(intent);
     }
 
     @Override
@@ -112,6 +116,10 @@ public class EditList extends AppCompatActivity {
     }
 
     private void imageDataToFile(Uri data) throws IOException {
+        DisplayMetrics dm = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        final int IMAGE_WIDTH = Math.min(dm.widthPixels, MAX_IMAGE_WIDTH);
+
         InputStream imageStream = getContentResolver().openInputStream(data);
         Bitmap src = BitmapFactory.decodeStream(imageStream);
         File file = new File(tempDir.toFile(), UUID.randomUUID().toString() + ".jpeg");

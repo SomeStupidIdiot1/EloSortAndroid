@@ -5,7 +5,7 @@
     <string name="select_pictures">Select Pictures</string>
     <string name="take_picture">Take Picture</string>
     <string name="done">Done</string>
-    <string name="remove_pictures">Delete Pictures</string>
+    <string name="picture_gallery">Pictures Gallery</string>
     <string name="edit_list">Edit List</string>
     <string name="see_rank">Rankings</string>
     <string name="play_list">Sort List</string>
@@ -20,4 +20,5 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+    <string name="gallery_image_item_content_desc">gallery image item</string>
 </resources>

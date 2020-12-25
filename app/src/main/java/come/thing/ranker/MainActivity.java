@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void onCreateList(View view){
-        Intent intent = new Intent(this, EditList.class);
+        Intent intent = new Intent(this, EditListActivity.class);
         startActivity(intent);
     }
     public void onOpenExistingList(View view){

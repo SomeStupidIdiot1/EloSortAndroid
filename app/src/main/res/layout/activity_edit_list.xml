@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditList">
+    tools:context=".EditListActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:onClick="deletePictures"
-            android:text="@string/remove_pictures" />
+            android:onClick="lookAtGallery"
+            android:text="@string/picture_gallery" />
 
         <Button
             android:id="@+id/button6"
