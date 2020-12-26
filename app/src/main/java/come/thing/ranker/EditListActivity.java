@@ -65,8 +65,13 @@ public class EditListActivity extends AppCompatActivity {
                 intent.setData(Uri.fromFile(newFile));
                 startActivity(intent);
             }
-        } else
-            Toast.makeText(this, R.string.list_name_exists, Toast.LENGTH_LONG).show();
+        } else {
+            if (listName.isEmpty())
+                Toast.makeText(this, R.string.list_name_empty, Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(this, R.string.list_name_exists, Toast.LENGTH_LONG).show();
+
+        }
     }
 
     public void takePicture(View view) {

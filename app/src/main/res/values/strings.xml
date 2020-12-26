@@ -23,4 +23,5 @@
     <string name="gallery_image_item_content_desc">gallery image item</string>
     <string name="delete_button">Deletes gallery item</string>
     <string name="items_deleted_desc">items deleted</string>
+    <string name="list_name_empty">List name cannot be empty</string>
 </resources>
