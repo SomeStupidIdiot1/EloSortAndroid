@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import come.thing.ranker.R;
@@ -70,5 +71,12 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     @Override
     public int getItemCount() {
         return localDataSet.size();
+    }
+
+    public List<Integer> getSelectedIndicesReverse() {
+        List<Integer> list = new ArrayList<>();
+        for (int i = getItemCount() - 1; i >= 0; i--)
+            if (localDataSet.get(i).isSelected()) list.add(i);
+        return list;
     }
 }
