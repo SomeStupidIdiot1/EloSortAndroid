@@ -26,7 +26,7 @@ public class GalleryActivity extends AppCompatActivity {
         if (data != null)
             for (File file : new File(data.getPath()).listFiles())
                 filePaths.add(new GalleryItem(Uri.fromFile(file)));
-        GalleryAdapter adapter = new GalleryAdapter(filePaths);
+        GalleryAdapter adapter = new GalleryAdapter(filePaths, findViewById(R.id.imageButton2));
         recyclerView.setAdapter(adapter);
     }
 }
