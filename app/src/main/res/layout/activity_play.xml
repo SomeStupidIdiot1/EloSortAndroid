@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="sortList"
             android:text="@string/play_list" />
 
         <Button
@@ -33,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="editList"
             android:text="@string/edit_list" />
 
         <Button
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:onClick="showRank"
             android:text="@string/see_rank" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

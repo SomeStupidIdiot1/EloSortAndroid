@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.UUID;
 
 import come.thing.ranker.gallery.GalleryActivity;
@@ -35,12 +36,21 @@ public class EditListActivity extends AppCompatActivity {
     final static String PICTURES_DIRECTORY_NAME = "created_pictures";
     private Path tempDir;
     private File recentImgTaken;
+    private Uri data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_list);
-        tempDir = Paths.get(getFilesDir().getPath(), PICTURES_DIRECTORY_NAME, getString(R.string.unfinished_folder_name) + UUID.randomUUID().toString());
+        data = getIntent().getData();
+        if (data == null) {
+            tempDir = Paths.get(getFilesDir().getPath(), PICTURES_DIRECTORY_NAME, getString(R.string.unfinished_folder_name) + UUID.randomUUID().toString());
+        } else {
+            TextView textView = findViewById(R.id.listNameText);
+            tempDir = Paths.get(Objects.requireNonNull(data.getPath()));
+            textView.setText(tempDir.getFileName().toString());
+            textView.setEnabled(false);
+        }
         tempDir.toFile().mkdirs();
     }
 
@@ -56,7 +66,7 @@ public class EditListActivity extends AppCompatActivity {
     public void done(View view) {
         String listName = ((TextView) findViewById(R.id.listNameText)).getText().toString().trim();
         File newFile = Paths.get(getFilesDir().getPath(), PICTURES_DIRECTORY_NAME, listName).toFile();
-        if (!newFile.exists()) {
+        if (data != null || !newFile.exists()) {
             boolean success = tempDir.toFile().renameTo(newFile);
             if (!success)
                 Toast.makeText(this, R.string.something_bad, Toast.LENGTH_LONG).show();

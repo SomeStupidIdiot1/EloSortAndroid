@@ -38,8 +38,9 @@ public class GalleryActivity extends AppCompatActivity {
                 GalleryItem item = filePaths.get(index);
                 new File(item.getUri().getPath()).delete();
                 filePaths.remove(index);
+                adapter.notifyItemRemoved(index);
+                adapter.notifyItemRangeChanged(index, filePaths.size());
             }
-            adapter.notifyDataSetChanged();
 
             String txt = count + " " + getResources().getString(R.string.items_deleted_desc);
             Toast.makeText(this, txt, Toast.LENGTH_LONG).show();
