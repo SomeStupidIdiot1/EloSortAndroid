@@ -15,22 +15,13 @@
     <string name="unfinished_folder_name">unfinished_list_name</string>
     <string name="list_name_exists">List name exists already</string>
     <string name="title_activity_camera_preview">CameraPreviewActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
     <string name="gallery_image_item_content_desc">gallery image item</string>
     <string name="delete_button">Deletes gallery item</string>
     <string name="items_deleted_desc">items deleted</string>
     <string name="list_name_empty">List name cannot be empty</string>
     <string name="title_activity_ranking">MainActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="skip">Skip</string>
+    <string name="rank_instructions">Click on the image that you prefer</string>
+    <string name="rank_image_button_desc">Item image selection</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

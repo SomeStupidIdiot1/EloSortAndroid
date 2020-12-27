@@ -7,6 +7,8 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -139,14 +141,15 @@ public class EditListActivity extends AppCompatActivity {
         Bitmap src = BitmapFactory.decodeStream(imageStream);
         File file = new File(tempDir.toFile(), UUID.randomUUID().toString() + ".jpeg");
         FileOutputStream outputStream = new FileOutputStream(file);
+        // Resize
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(src, IMAGE_WIDTH,
                 IMAGE_WIDTH * src.getHeight() / src.getWidth(), true);
+        // Output
         resizedBitmap.compress(Bitmap.CompressFormat.JPEG, IMAGE_COMPRESS_QUALITY, outputStream);
-
+        // Clean up
         outputStream.flush();
         outputStream.close();
         resizedBitmap.recycle();
         src.recycle();
     }
-
 }

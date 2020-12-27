@@ -13,16 +13,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Scanner;
 
 public class PlayActivity extends AppCompatActivity {
     public static final String FILE_META_DATA_NAME = "data.json";
@@ -39,6 +35,10 @@ public class PlayActivity extends AppCompatActivity {
         else {
             ensureEloDataExists();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
     public void editList(View view) {
