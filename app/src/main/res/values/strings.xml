@@ -23,5 +23,6 @@
     <string name="skip">Skip</string>
     <string name="rank_instructions">Click on the image that you prefer</string>
     <string name="rank_image_button_desc">Item image selection</string>
+    <string name="need_more_than_one_item">More than one item is needed to rank</string>
 
 </resources>
