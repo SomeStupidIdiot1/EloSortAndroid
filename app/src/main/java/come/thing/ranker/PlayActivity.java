@@ -1,6 +1,5 @@
 package come.thing.ranker;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,6 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Iterator;
+
+import come.thing.ranker.ranking.RankingActivity;
 
 public class PlayActivity extends AppCompatActivity {
     public static final String FILE_META_DATA_NAME = "data.json";
@@ -39,6 +40,7 @@ public class PlayActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        // Empty to disable back button
     }
 
     public void editList(View view) {

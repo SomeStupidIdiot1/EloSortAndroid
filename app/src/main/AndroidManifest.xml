@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ranker">
         <activity android:name=".SortingActivity"></activity>
-        <activity android:name=".RankingActivity" />
+        <activity android:name=".ranking.RankingActivity" />
         <activity android:name=".gallery.GalleryActivity" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".EditListActivity" />
