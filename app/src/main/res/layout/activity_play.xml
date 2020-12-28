@@ -45,5 +45,14 @@
             android:layout_marginBottom="20dp"
             android:onClick="showRank"
             android:text="@string/see_rank" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="closeList"
+            android:text="@string/close_list" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

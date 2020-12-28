@@ -61,6 +61,11 @@ public class PlayActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void closeList(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private void ensureEloDataExists() {
         File file = Paths.get(data.getPath(), FILE_META_DATA_NAME).toFile();
         JSONObject eloData = new JSONObject();
