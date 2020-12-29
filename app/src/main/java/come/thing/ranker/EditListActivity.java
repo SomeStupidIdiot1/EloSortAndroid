@@ -35,7 +35,7 @@ public class EditListActivity extends AppCompatActivity {
     private final static int REQUEST_IMAGE_CAPTURE = 1;
     final int MAX_IMAGE_WIDTH = 1000;
     final static int IMAGE_COMPRESS_QUALITY = 60;
-    final static String PICTURES_DIRECTORY_NAME = "created_pictures";
+    public final static String PICTURES_DIRECTORY_NAME = "created_pictures";
     private Path tempDir;
     private File recentImgTaken;
     private Uri data;

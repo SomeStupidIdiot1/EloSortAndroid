@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import come.thing.ranker.select.SelectActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onOpenExistingList(View view){
-        Intent intent = new Intent(this, PlayActivity.class);
+        Intent intent = new Intent(this, SelectActivity.class);
         startActivity(intent);
     }
 }
