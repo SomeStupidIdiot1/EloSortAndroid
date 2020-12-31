@@ -69,14 +69,6 @@
             android:onClick="skip"
             android:text="@string/skip" />
 
-        <Button
-            android:id="@+id/button11"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:onClick="done"
-            android:text="@string/done" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

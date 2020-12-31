@@ -1,6 +1,10 @@
 package come.thing.ranker.select;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +14,7 @@ import java.nio.file.Paths;
 
 
 import come.thing.ranker.EditListActivity;
+import come.thing.ranker.MainActivity;
 import come.thing.ranker.R;
 
 public class SelectActivity extends AppCompatActivity {
@@ -20,6 +25,9 @@ public class SelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -27,5 +35,14 @@ public class SelectActivity extends AppCompatActivity {
 
         SelectAdapter adapter = new SelectAdapter(file.listFiles());
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

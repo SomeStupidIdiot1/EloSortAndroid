@@ -1,11 +1,13 @@
 package come.thing.ranker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -39,6 +41,10 @@ public class SortingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sorting);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         path = getIntent().getData().getPath();
         file = new File(path, PlayActivity.FILE_META_DATA_NAME);
         try {
@@ -72,12 +78,6 @@ public class SortingActivity extends AppCompatActivity {
         makeRandomImages();
     }
 
-    public void done(View view) {
-        saveData();
-        Intent intent = new Intent(this, PlayActivity.class);
-        intent.setData(getIntent().getData());
-        startActivity(intent);
-    }
 
     public void skip(View view) {
         makeRandomImages();
@@ -154,5 +154,15 @@ public class SortingActivity extends AppCompatActivity {
         ImageButton button2 = findViewById(R.id.imageButton);
         button1.setImageURI(Uri.fromFile(Paths.get(path, firstImage).toFile()));
         button2.setImageURI(Uri.fromFile(Paths.get(path, secondImage).toFile()));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            saveData();
+            startActivity(new Intent(this, PlayActivity.class).setData(getIntent().getData()));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

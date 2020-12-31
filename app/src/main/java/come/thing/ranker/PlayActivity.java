@@ -1,11 +1,13 @@
 package come.thing.ranker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import org.json.JSONException;
@@ -30,6 +32,10 @@ public class PlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         data = getIntent().getData();
         if (data == null)
             startActivity(new Intent(this, EditListActivity.class));
@@ -58,11 +64,6 @@ public class PlayActivity extends AppCompatActivity {
     public void sortList(View view) {
         Intent intent = new Intent(this, SortingActivity.class);
         intent.setData(data);
-        startActivity(intent);
-    }
-
-    public void closeList(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -108,5 +109,14 @@ public class PlayActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("#elo", "Could not write to json file");
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

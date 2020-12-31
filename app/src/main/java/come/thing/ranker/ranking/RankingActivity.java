@@ -1,12 +1,15 @@
 package come.thing.ranker.ranking;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import come.thing.ranker.EditListActivity;
 import come.thing.ranker.PlayActivity;
 import come.thing.ranker.R;
 
@@ -29,6 +33,10 @@ public class RankingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Uri> filePaths = new ArrayList<>();
@@ -53,5 +61,14 @@ public class RankingActivity extends AppCompatActivity {
         }
         RankingAdapter adapter = new RankingAdapter(filePaths);
         recyclerView.setAdapter(adapter);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(this, PlayActivity.class)
+                    .setData(getIntent().getData()));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
