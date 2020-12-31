@@ -18,8 +18,6 @@ import come.thing.ranker.R;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
 
     private final List<GalleryItem> localDataSet;
-    private final ImageButton button;
-    private int numSelected = 0;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
@@ -34,10 +32,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         }
     }
 
-    public GalleryAdapter(List<GalleryItem> dataSet, ImageButton button) {
+    public GalleryAdapter(List<GalleryItem> dataSet) {
         localDataSet = dataSet;
-        this.button = button;
-        button.setVisibility(View.GONE);
     }
 
     @NonNull
@@ -59,11 +55,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         view.setOnClickListener(view1 -> {
             item.setSelected(!item.isSelected());
             view.setColorFilter(item.isSelected() ? TINT : Color.TRANSPARENT);
-            numSelected += item.isSelected() ? 1 : -1;
-            if (numSelected > 0)
-                button.setVisibility(View.VISIBLE);
-            else
-                button.setVisibility(View.GONE);
         });
 
     }
