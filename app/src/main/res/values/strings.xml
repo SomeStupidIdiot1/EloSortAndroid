@@ -25,4 +25,10 @@
     <string name="rank_image_button_desc">Item image selection</string>
     <string name="need_more_than_one_item">More than one item is needed to rank</string>
     <string name="close_list">Exit</string>
+    <string name="title_edit">Edit List</string>
+    <string name="title_new_list">New List</string>
+    <string name="title_open_existing">Open Existing List</string>
+    <string name="title_ranking">Rankings</string>
+    <string name="title_sorting">Sort List</string>
+    <string name="title_gallery">Gallery</string>
 </resources>

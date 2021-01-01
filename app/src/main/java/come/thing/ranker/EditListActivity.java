@@ -44,14 +44,18 @@ public class EditListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_list);
+
         data = getIntent().getData();
         if (data == null) {
             tempDir = Paths.get(getFilesDir().getPath(), PICTURES_DIRECTORY_NAME, getString(R.string.unfinished_folder_name) + UUID.randomUUID().toString());
+            setTitle(R.string.title_new_list);
         } else {
             TextView textView = findViewById(R.id.listNameText);
             tempDir = Paths.get(Objects.requireNonNull(data.getPath()));
             textView.setText(tempDir.getFileName().toString());
             textView.setEnabled(false);
+            setTitle(R.string.title_edit);
+
         }
         tempDir.toFile().mkdirs();
     }

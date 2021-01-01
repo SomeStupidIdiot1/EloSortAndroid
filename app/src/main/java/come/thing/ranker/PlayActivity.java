@@ -40,6 +40,7 @@ public class PlayActivity extends AppCompatActivity {
         if (data == null)
             startActivity(new Intent(this, EditListActivity.class));
         else {
+            setTitle(new File(data.toString()).getName());
             ensureEloDataExists();
         }
     }
